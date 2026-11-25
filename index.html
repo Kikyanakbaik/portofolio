@@ -1,0 +1,1380 @@
+
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal Portfolio - Rifky Maulana Firmansyah">
+    <title>Rifky Maulana | Personal Portfolio</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    },
+                    colors: {
+                        accent: '#06b6d4'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #06b6d4, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-7px);
+            border-color: #06b6d4;
+        }
+
+        .project-card {
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: #06b6d4;
+        }
+
+        .cursor {
+            display: inline-block;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .modal {
+            display: none;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-950 text-slate-100 dark:bg-slate-950 dark:text-slate-100
+             transition-colors duration-300">
+
+    <!-- NAVBAR -->
+    <header class="fixed top-0 left-0 w-full z-50 glass
+                   bg-slate-950/80 border-b border-slate-800">
+
+        <nav class="max-w-6xl mx-auto px-6 py-4 flex
+                    items-center justify-between">
+
+            <a href="#home" class="text-xl font-extrabold gradient-text">
+                Portofolio
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 text-sm">
+                <a href="#home" class="hover:text-cyan-400">Home</a>
+                <a href="#about" class="hover:text-cyan-400">Tentang</a>
+                <a href="#skills" class="hover:text-cyan-400">Keahlian</a>
+                <a href="#projects" class="hover:text-cyan-400">Proyek</a>
+                <a href="#contact" class="hover:text-cyan-400">Kontak</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <!-- Theme Toggle -->
+                <button id="themeToggle"
+                    class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700"
+                    aria-label="Ganti tema">
+                    <span id="themeIcon">☀️</span>
+                </button>
+
+                <!-- Mobile Menu -->
+                <button id="menuToggle"
+                    class="md:hidden text-2xl"
+                    aria-label="Buka menu">
+                    ☰
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu"
+            class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-6 py-4">
+
+            <div class="flex flex-col gap-4">
+                <a href="#home" class="mobile-link">Home</a>
+                <a href="#about" class="mobile-link">Tentang</a>
+                <a href="#skills" class="mobile-link">Keahlian</a>
+                <a href="#projects" class="mobile-link">Proyek</a>
+                <a href="#contact" class="mobile-link">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- HERO SECTION -->
+    <section id="home"
+        class="min-h-screen flex items-center px-6 pt-28 pb-16">
+
+        <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2
+                    gap-12 items-center">
+
+            <div class="fade-in">
+
+                <span class="inline-block px-4 py-2 rounded-full
+                    bg-cyan-500/10 text-cyan-400 text-sm
+                    border border-cyan-500/20 mb-6">
+
+                    ● Available for collaboration
+                </span>
+
+                <h1 class="text-4xl md:text-6xl font-extrabold
+                           leading-tight mb-6">
+
+                    Halo, Saya <br>
+                    <span class="gradient-text">
+                        Rifky Maulana
+                    </span>
+                </h1>
+
+                <h2 class="text-xl md:text-2xl font-semibold
+                           text-slate-300 mb-5">
+
+                    Saya seorang
+                    <span id="typing"
+                        class="text-cyan-400"></span>
+                    <span class="cursor">|</span>
+                </h2>
+
+                <p class="text-slate-400 leading-relaxed mb-8 max-w-lg">
+
+                    Mahasiswa D3 Teknik Komputer yang memiliki minat
+                    dalam dunia pemrograman, pengembangan website,
+                    administrasi sistem Linux, perakitan komputer dan Internet of Things.
+                    Saya senang mempelajari teknologi baru serta
+                    mengembangkan solusi digital yang bermanfaat.
+                </p>
+
+                <div class="flex flex-wrap gap-4">
+
+                    <a href="#projects"
+                        class="px-6 py-3 rounded-xl bg-cyan-500
+                               text-slate-950 font-bold
+                               hover:bg-cyan-400 transition">
+
+                        Lihat Proyek →
+                    </a>
+
+                    <a href="#contact"
+                        class="px-6 py-3 rounded-xl border
+                               border-slate-600 hover:border-cyan-400
+                               hover:text-cyan-400 transition">
+
+                        Hubungi Saya
+                    </a>
+
+                </div>
+
+                <div class="flex gap-5 mt-10 text-2xl">
+                    <a href="https://github.com/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="GitHub"
+                       class="hover:text-cyan-400">⌘</a>
+
+                    <a href="https://www.linkedin.com/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="LinkedIn"
+                       class="hover:text-cyan-400">in</a>
+
+                    <a href="https://www.instagram.com/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Instagram"
+                       class="hover:text-cyan-400">◎</a>
+                </div>
+
+            </div>
+
+
+            <!-- HERO PROFILE CARD -->
+            <div class="fade-in flex justify-center">
+
+                <div class="relative w-full max-w-sm">
+
+                    <div class="absolute inset-0 bg-cyan-500
+                        blur-3xl opacity-10 rounded-full">
+                    </div>
+
+                    <div class="relative glass bg-slate-900/80
+                        border border-slate-700 rounded-3xl
+                        p-8 shadow-2xl">
+
+                        <div class="flex justify-between mb-8">
+
+                            <span class="text-slate-400 text-sm">
+                                PERSONAL PROFILE
+                            </span>
+
+                            <span class="text-emerald-400 text-sm">
+                                ● Online
+                            </span>
+
+                        </div>
+
+                        
+<!-- FOTO PROFIL -->
+<div class="flex justify-center mb-6">
+
+    <img
+        src="images/foto.jpeg"
+        alt="Foto Profil Rifky"
+        class="w-36 h-36 rounded-full
+        object-cover object-center
+        border-4 border-cyan-400
+        shadow-lg shadow-cyan-500/20"
+    >
+
+</div>
+
+                            
+
+                        </div>
+
+                        <h3 class="text-2xl text-center font-bold">
+                            Rifky Maulana Firmansyah
+                        </h3>
+
+                        <p class="text-center text-cyan-400 mt-2">
+                            Computer Engineering Student
+                        </p>
+
+                        <div class="border-t border-slate-700 my-6"></div>
+
+                        <div class="space-y-4 text-sm">
+
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Fokus</span>
+                                <span>Programming</span>
+                            </div>
+
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Bidang</span>
+                                <span>Technology</span>
+                            </div>
+
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Minat</span>
+                                <span>Web & IoT</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 px-6 bg-slate-900/50">
+
+        <div class="max-w-6xl mx-auto">
+
+            <div class="fade-in text-center mb-14">
+
+                <p class="text-cyan-400 font-semibold mb-3">
+                    INTRODUCTION
+                </p>
+
+                <h2 class="text-3xl md:text-4xl font-bold">
+                    Tentang <span class="gradient-text">Saya</span>
+                </h2>
+
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+
+                <div class="fade-in">
+
+                    <h3 class="text-2xl font-bold mb-5">
+                        Mengenal Saya Lebih Dekat
+                    </h3>
+
+                    <p class="text-slate-400 leading-relaxed mb-5">
+
+                        Saya adalah mahasiswa D3 Teknik Komputer
+                        yang tertarik pada perkembangan teknologi
+                        informasi dan komputer.
+
+                    </p>
+
+                    <p class="text-slate-400 leading-relaxed mb-5">
+
+                        Saya mempelajari berbagai bidang teknologi,
+                        mulai dari bahasa pemrograman C++, HTML,
+                        JavaScript, pengelolaan server Linux Debian,
+                        jaringan dan perakitan komputer, serta pengembangan
+                        perangkat Internet of Things.
+
+                    </p>
+
+                    <p class="text-slate-400 leading-relaxed">
+
+                        Saya terus berusaha meningkatkan kemampuan
+                        melalui praktikum, proyek mandiri, dan
+                        eksplorasi teknologi terbaru.
+
+                    </p>
+
+                </div>
+
+                <div class="fade-in grid grid-cols-2 gap-4">
+
+                    <div class="bg-slate-800 p-6 rounded-2xl
+                        border border-slate-700">
+                        <h3 class="text-3xl font-bold text-cyan-400">
+                            C++
+                        </h3>
+                        <p class="text-slate-400 text-sm mt-2">
+                            Programming
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800 p-6 rounded-2xl
+                        border border-slate-700">
+                        <h3 class="text-3xl font-bold text-emerald-400">
+                            Linux
+                        </h3>
+                        <p class="text-slate-400 text-sm mt-2">
+                            System Administration
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800 p-6 rounded-2xl
+                        border border-slate-700">
+                        <h3 class="text-3xl font-bold text-cyan-400">
+                            HTML
+                        </h3>
+                        <p class="text-slate-400 text-sm mt-2">
+                            Web Development
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800 p-6 rounded-2xl
+                        border border-slate-700">
+                        <h3 class="text-3xl font-bold text-emerald-400">
+                            IoT
+                        </h3>
+                        <p class="text-slate-400 text-sm mt-2">
+                            Hardware & Sensor
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-800 p-6 rounded-2xl
+                        border border-slate-700">
+                        <h3 class="text-3xl font-bold text-emerald-400">
+                            Perakitan Komputer
+                        </h3>
+                        <p class="text-slate-400 text-sm mt-2">
+                            Hardware & Software
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="py-24 px-6">
+
+        <div class="max-w-6xl mx-auto">
+
+            <div class="fade-in text-center mb-14">
+
+                <p class="text-cyan-400 font-semibold mb-3">
+                    MY EXPERTISE
+                </p>
+
+                <h2 class="text-3xl md:text-4xl font-bold">
+                    Keahlian <span class="gradient-text">Saya</span>
+                </h2>
+
+                <p class="text-slate-400 mt-4">
+                    Teknologi yang sedang saya pelajari dan kembangkan.
+                </p>
+
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+
+                <!-- Skill 1 -->
+                <div class="skill-card fade-in bg-slate-900
+                    border border-slate-800 rounded-2xl
+                    p-6 text-center transition duration-300">
+
+                    <div class="text-4xl mb-4">💻</div>
+
+                    <h3 class="font-bold">C++</h3>
+
+                    <p class="text-slate-400 text-sm mt-2">
+                        Programming
+                    </p>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="skill-card fade-in bg-slate-900
+                    border border-slate-800 rounded-2xl
+                    p-6 text-center transition duration-300">
+
+                    <div class="text-4xl mb-4">🐧</div>
+
+                    <h3 class="font-bold">Linux Debian</h3>
+
+                    <p class="text-slate-400 text-sm mt-2">
+                        System Administration
+                    </p>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="skill-card fade-in bg-slate-900
+                    border border-slate-800 rounded-2xl
+                    p-6 text-center transition duration-300">
+
+                    <div class="text-4xl mb-4">🌐</div>
+
+                    <h3 class="font-bold">HTML & CSS</h3>
+
+                    <p class="text-slate-400 text-sm mt-2">
+                        Web Development
+                    </p>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="skill-card fade-in bg-slate-900
+                    border border-slate-800 rounded-2xl
+                    p-6 text-center transition duration-300">
+
+                    <div class="text-4xl mb-4">⚡</div>
+
+                    <h3 class="font-bold">JavaScript</h3>
+
+                    <p class="text-slate-400 text-sm mt-2">
+                        Interactive Web
+                    </p>
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="skill-card fade-in bg-slate-900
+                    border border-slate-800 rounded-2xl
+                    p-6 text-center transition duration-300">
+
+                    <div class="text-4xl mb-4">📡</div>
+
+                    <h3 class="font-bold">IoT</h3>
+
+                    <p class="text-slate-400 text-sm mt-2">
+                        Sensor & Actuator
+                    </p>
+                </div>
+
+                <!-- Skill 6 -->
+                <div class="skill-card fade-in bg-slate-900
+                    border border-slate-800 rounded-2xl
+                    p-6 text-center transition duration-300">
+
+                    <div class="text-4xl mb-4">🖥️</div>
+
+                    <h3 class="font-bold">Perakitan Komputer</h3>
+
+                    <p class="text-slate-400 text-sm mt-2">
+                        Hardware dan Software
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PROJECT SECTION -->
+    <section id="projects" class="py-24 px-6 bg-slate-900/50">
+
+        <div class="max-w-6xl mx-auto">
+
+            <div class="fade-in text-center mb-14">
+
+                <p class="text-cyan-400 font-semibold mb-3">
+                    MY WORK
+                </p>
+
+                <h2 class="text-3xl md:text-4xl font-bold">
+                    Proyek <span class="gradient-text">Unggulan</span>
+                </h2>
+
+                <p class="text-slate-400 mt-4">
+                    Beberapa contoh proyek pengembangan teknologi.
+                </p>
+
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-7">
+
+                <!-- Project 1 -->
+                <div class="project-card fade-in bg-slate-900
+                    border border-slate-800 rounded-2xl overflow-hidden">
+
+                    <div class="h-44 overflow-hidden">
+    <img src="images/portofolio.png"
+         alt="Personal Portfolio"
+         class="w-full h-full object-cover">
+</div>
+
+                    <div class="p-6">
+
+                        <span class="text-xs text-cyan-400">
+                            WEB DEVELOPMENT
+                        </span>
+
+                        <h3 class="text-xl font-bold mt-3 mb-3">
+                            Personal Portfolio
+                        </h3>
+
+                        <p class="text-slate-400 text-sm leading-relaxed">
+
+                            Website perkenalan diri yang menampilkan
+                            profil, keahlian, proyek, dan informasi kontak.
+
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mt-5">
+
+                            <span class="bg-slate-800 px-3 py-1
+                                rounded-full text-xs">HTML</span>
+
+                            <span class="bg-slate-800 px-3 py-1
+                                rounded-full text-xs">Tailwind</span>
+
+                            <span class="bg-slate-800 px-3 py-1
+                                rounded-full text-xs">JavaScript</span>
+
+                        </div>
+
+                        <button
+                            onclick="openProject(0)"
+                            class="mt-6 text-cyan-400 font-semibold
+                            hover:text-emerald-400">
+
+                            Lihat Detail →
+                        </button>
+
+                    </div>
+                </div>
+
+
+                <!-- Project 2 -->
+                <div class="project-card fade-in bg-slate-900
+                    border border-slate-800 rounded-2xl overflow-hidden">
+
+                    <div class="h-44 overflow-hidden">
+    <img src="images/portofolio2.png"
+         alt="Personal Portfolio"
+         class="w-full h-full object-cover">
+</div>
+
+                    <div class="p-6">
+
+                        <span class="text-xs text-emerald-400">
+                            SYSTEM ADMINISTRATION
+                        </span>
+
+                        <h3 class="text-xl font-bold mt-3 mb-3">
+                            Linux Server Administration
+                        </h3>
+
+                        <p class="text-slate-400 text-sm leading-relaxed">
+
+                            Praktik konfigurasi server Linux Debian
+                            meliputi DNS, FTP, Samba, dan Kontainer.
+
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mt-5">
+
+                            <span class="bg-slate-800 px-3 py-1
+                                rounded-full text-xs">Debian</span>
+
+                            <span class="bg-slate-800 px-3 py-1
+                                rounded-full text-xs">Linux</span>
+
+                        </div>
+
+                        <button
+                            onclick="openProject(1)"
+                            class="mt-6 text-cyan-400 font-semibold
+                            hover:text-emerald-400">
+
+                            Lihat Detail →
+                        </button>
+
+                    </div>
+                </div>
+
+
+                <!-- Project 3 -->
+                <div class="project-card fade-in bg-slate-900
+                    border border-slate-800 rounded-2xl overflow-hidden">
+
+                    <div class="h-44 overflow-hidden">
+    <img src="images/portofolio3.jpeg"
+         alt="Personal Portfolio"
+         class="w-full h-full object-cover">
+</div>
+
+                    <div class="p-6">
+
+                        <span class="text-xs text-purple-400">
+                            INTERNET OF THINGS
+                        </span>
+
+                        <h3 class="text-xl font-bold mt-3 mb-3">
+                            IoT Sensor Monitoring
+                        </h3>
+
+                        <p class="text-slate-400 text-sm leading-relaxed">
+
+                            Proyek monitoring suhu menggunakan
+                            Wemos D1 Mini, sensor DHT, LED,
+                            tombol, dan buzzer.
+
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 mt-5">
+
+                            <span class="bg-slate-800 px-3 py-1
+                                rounded-full text-xs">C++</span>
+
+                            <span class="bg-slate-800 px-3 py-1
+                                rounded-full text-xs">Wemos</span>
+
+                            <span class="bg-slate-800 px-3 py-1
+                                rounded-full text-xs">DHT</span>
+
+                        </div>
+
+                        <button
+                            onclick="openProject(2)"
+                            class="mt-6 text-cyan-400 font-semibold
+                            hover:text-emerald-400">
+
+                            Lihat Detail →
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PROJECT MODAL -->
+    <div id="projectModal"
+        class="modal fixed inset-0 z-[100] bg-black/80
+        items-center justify-center p-5">
+
+        <div class="bg-slate-900 border border-slate-700
+            rounded-2xl max-w-lg w-full p-8 relative">
+
+            <button onclick="closeProject()"
+                class="absolute top-4 right-5 text-2xl
+                text-slate-400 hover:text-white"
+                aria-label="Tutup modal">
+
+                &times;
+
+            </button>
+
+            <h3 id="modalTitle"
+                class="text-2xl font-bold mb-4 text-cyan-400">
+            </h3>
+
+            <p id="modalDescription"
+                class="text-slate-400 leading-relaxed">
+            </p>
+
+            <div id="modalTech"
+                class="flex flex-wrap gap-2 mt-6">
+            </div>
+
+            <button onclick="closeProject()"
+                class="mt-8 bg-cyan-500 text-slate-950
+                font-bold px-5 py-2 rounded-lg">
+
+                Tutup
+            </button>
+
+        </div>
+    </div>
+
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-24 px-6">
+
+        <div class="max-w-5xl mx-auto">
+
+            <div class="fade-in text-center mb-14">
+
+                <p class="text-cyan-400 font-semibold mb-3">
+                    GET IN TOUCH
+                </p>
+
+                <h2 class="text-3xl md:text-4xl font-bold">
+                    Hubungi <span class="gradient-text">Saya</span>
+                </h2>
+
+                <p class="text-slate-400 mt-4">
+                    Mari berdiskusi dan berkolaborasi dalam
+                    mengembangkan sebuah proyek.
+                </p>
+
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10">
+
+                <!-- Contact Information -->
+                <div class="fade-in space-y-6">
+
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">
+                            Informasi Kontak
+                        </h3>
+
+                        <p class="text-slate-400 leading-relaxed">
+                            Silakan hubungi saya melalui informasi
+                            kontak atau media sosial berikut.
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+
+                        <div class="w-12 h-12 rounded-xl
+                            bg-cyan-500/10 flex items-center
+                            justify-center text-xl">
+                            ✉️
+                        </div>
+
+                        <div>
+                            <p class="text-slate-400 text-sm">
+                                Email
+                            </p>
+
+                            <a href="mailto:emailkamu@example.com"
+                                class="hover:text-cyan-400">
+                                grifky96@gmail.com
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="flex items-center gap-4">
+
+                        <div class="w-12 h-12 rounded-xl
+                            bg-cyan-500/10 flex items-center
+                            justify-center text-xl">
+                            🐙
+                        </div>
+
+                        <div>
+                            <p class="text-slate-400 text-sm">
+                                GitHub
+                            </p>
+
+                            <a href="https://github.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="hover:text-cyan-400">
+                                -
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="flex items-center gap-4">
+
+                        <div class="w-12 h-12 rounded-xl
+                            bg-cyan-500/10 flex items-center
+                            justify-center text-xl">
+                            💼
+                        </div>
+
+                        <div>
+                            <p class="text-slate-400 text-sm">
+                                LinkedIn
+                            </p>
+
+                            <a href="https://www.linkedin.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="hover:text-cyan-400">
+                                -
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="flex items-center gap-4">
+
+                        <div class="w-12 h-12 rounded-xl
+                            bg-cyan-500/10 flex items-center
+                            justify-center text-xl">
+                            📷
+                        </div>
+
+                        <div>
+                            <p class="text-slate-400 text-sm">
+                                Instagram
+                            </p>
+
+                            <a href="https://www.instagram.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="hover:text-cyan-400">
+                                @vxykiikyy_
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Contact Form -->
+                <form id="contactForm"
+                    class="fade-in bg-slate-900 border
+                    border-slate-800 rounded-2xl p-7">
+
+                    <div class="mb-5">
+
+                        <label for="name"
+                            class="block text-sm mb-2">
+                            Nama Lengkap
+                        </label>
+
+                        <input type="text" id="name"
+                            placeholder="Masukkan nama Anda"
+                            required maxlength="100"
+                            class="w-full bg-slate-800 border
+                            border-slate-700 rounded-xl p-3
+                            outline-none focus:border-cyan-400">
+                    </div>
+
+                    <div class="mb-5">
+
+                        <label for="email"
+                            class="block text-sm mb-2">
+                            Email
+                        </label>
+
+                        <input type="email" id="email"
+                            placeholder="nama@email.com"
+                            required maxlength="150"
+                            class="w-full bg-slate-800 border
+                            border-slate-700 rounded-xl p-3
+                            outline-none focus:border-cyan-400">
+                    </div>
+
+                    <div class="mb-5">
+
+                        <label for="message"
+                            class="block text-sm mb-2">
+                            Pesan
+                        </label>
+
+                        <textarea id="message" rows="5"
+                            placeholder="Tuliskan pesan Anda..."
+                            required maxlength="3000"
+                            class="w-full bg-slate-800 border
+                            border-slate-700 rounded-xl p-3
+                            outline-none focus:border-cyan-400">
+                        </textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-cyan-500
+                        text-slate-950 font-bold p-3
+                        rounded-xl hover:bg-cyan-400 transition">
+
+                        Kirim Pesan →
+                    </button>
+
+                    <p id="formStatus"
+                        class="text-sm mt-4 text-center"
+                        role="status"
+                        aria-live="polite">
+                    </p>
+
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800
+        bg-slate-900/50 py-8 px-6">
+
+        <div class="max-w-6xl mx-auto
+            text-center text-slate-400 text-sm">
+
+            <p>
+                © <span id="year"></span>
+                <span class="text-cyan-400 font-bold">
+                    Rifky Maulana Firmansyah
+                </span>.
+                All Rights Reserved.
+            </p>
+
+            <p class="mt-2">
+                Built with HTML5, Tailwind CSS & JavaScript.
+            </p>
+
+        </div>
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // ===================================
+        // 1. TYPING ANIMATION
+        // ===================================
+
+        const typingElement = document.getElementById("typing");
+
+        const roles = [
+            "Computer Engineering Student",
+            "Web Developer",
+            "C++ Programmer",
+            "Linux Administrator",
+            "IoT Enthusiast"
+        ];
+
+        let roleIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        function typeEffect() {
+
+            const currentRole = roles[roleIndex];
+
+            if (deleting) {
+                charIndex--;
+            } else {
+                charIndex++;
+            }
+
+            typingElement.textContent =
+                currentRole.substring(0, charIndex);
+
+            let speed = deleting ? 45 : 90;
+
+            if (!deleting && charIndex === currentRole.length) {
+                deleting = true;
+                speed = 1500;
+            }
+
+            else if (deleting && charIndex === 0) {
+                deleting = false;
+
+                roleIndex = (roleIndex + 1) % roles.length;
+
+                speed = 400;
+            }
+
+            setTimeout(typeEffect, speed);
+        }
+
+        typeEffect();
+
+
+        // ===================================
+        // 2. DARK / LIGHT MODE
+        // ===================================
+
+        const themeToggle =
+            document.getElementById("themeToggle");
+
+        const themeIcon =
+            document.getElementById("themeIcon");
+
+        function setTheme(isDark) {
+
+            document.documentElement.classList.toggle(
+                "dark", isDark
+            );
+
+            // Sesuaikan tampilan kedua tema
+            document.body.classList.toggle(
+                "bg-slate-950", isDark
+            );
+
+            document.body.classList.toggle(
+                "text-slate-100", isDark
+            );
+
+            document.body.classList.toggle(
+                "bg-slate-50", !isDark
+            );
+
+            document.body.classList.toggle(
+                "text-slate-900", !isDark
+            );
+
+            themeIcon.textContent = isDark ? "☀️" : "🌙";
+
+            document.querySelectorAll("header").forEach(el => {
+                el.classList.toggle("bg-slate-950/80", isDark);
+                el.classList.toggle("bg-white/80", !isDark);
+            });
+
+            document.querySelectorAll(
+                "section.bg-slate-900\\/50"
+            ).forEach(el => {
+                el.classList.toggle("bg-slate-900/50", isDark);
+                el.classList.toggle("bg-slate-100", !isDark);
+            });
+
+            document.querySelectorAll(
+                ".bg-slate-900"
+            ).forEach(el => {
+                el.classList.toggle("bg-slate-900", isDark);
+                el.classList.toggle("bg-white", !isDark);
+            });
+
+            document.querySelectorAll(
+                ".bg-slate-800"
+            ).forEach(el => {
+                el.classList.toggle("bg-slate-800", isDark);
+                el.classList.toggle("bg-slate-100", !isDark);
+            });
+
+            document.querySelectorAll(
+                ".text-slate-100"
+            ).forEach(el => {
+                el.classList.toggle("text-slate-100", isDark);
+                el.classList.toggle("text-slate-900", !isDark);
+            });
+
+            document.querySelectorAll(
+                ".text-slate-300, .text-slate-400"
+            ).forEach(el => {
+                el.classList.toggle("text-slate-400", isDark);
+                el.classList.toggle("text-slate-600", !isDark);
+            });
+
+            document.querySelectorAll(
+                ".border-slate-700, .border-slate-800"
+            ).forEach(el => {
+                el.classList.toggle("border-slate-800", isDark);
+                el.classList.toggle("border-slate-200", !isDark);
+            });
+        }
+
+        let isDark = true;
+
+        themeToggle.addEventListener("click", () => {
+            isDark = !isDark;
+            setTheme(isDark);
+        });
+
+
+        // ===================================
+        // 3. MOBILE MENU
+        // ===================================
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const mobileMenu =
+            document.getElementById("mobileMenu");
+
+        menuToggle.addEventListener("click", () => {
+
+            mobileMenu.classList.toggle("hidden");
+
+            menuToggle.textContent =
+                mobileMenu.classList.contains("hidden")
+                ? "☰" : "✕";
+
+        });
+
+        document.querySelectorAll(".mobile-link").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                mobileMenu.classList.add("hidden");
+                menuToggle.textContent = "☰";
+
+            });
+
+        });
+
+
+        // ===================================
+        // 4. SCROLL ANIMATION
+        // INTERSECTION OBSERVER
+        // ===================================
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("show");
+
+                        observer.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.15
+            }
+        );
+
+        document.querySelectorAll(".fade-in").forEach(element => {
+            observer.observe(element);
+        });
+
+
+        // ===================================
+        // 5. PROJECT MODAL
+        // ===================================
+
+        const projects = [
+
+            {
+                title: "Personal Portfolio Website",
+
+                description:
+                    "Website personal portfolio yang dibuat untuk menampilkan profil diri, informasi keahlian, pengalaman proyek, dan kontak. Website menggunakan desain responsif dan animasi interaktif.",
+
+                technologies: [
+                    "HTML5",
+                    "Tailwind CSS",
+                    "Vanilla JavaScript"
+                ]
+            },
+
+            {
+                title: "Linux Server Administration",
+
+                description:
+                    "Proyek praktikum administrasi sistem menggunakan Linux Debian. Meliputi pengelolaan DNS Server, FTP Server, File Sharing Samba, serta penggunaan Docker untuk menjalankan container.",
+
+                technologies: [
+                    "Debian Linux",
+                    "DNS",
+                    "FTP",
+                    "Samba",
+                    "Docker"
+                ]
+            },
+
+            {
+                title: "IoT Sensor Monitoring",
+
+                description:
+                    "Proyek Internet of Things menggunakan Wemos D1 Mini dan sensor DHT untuk membaca suhu dan kelembapan. Sistem juga menggunakan LED, tombol, dan buzzer sebagai aktuator.",
+
+                technologies: [
+                    "C++",
+                    "Wemos D1 Mini",
+                    "DHT Sensor",
+                    "IoT"
+                ]
+            }
+
+        ];
+
+        function openProject(index) {
+
+            const project = projects[index];
+
+            document.getElementById("modalTitle").textContent =
+                project.title;
+
+            document.getElementById("modalDescription").textContent =
+                project.description;
+
+            const techContainer =
+                document.getElementById("modalTech");
+
+            techContainer.innerHTML = "";
+
+            project.technologies.forEach(tech => {
+
+                const badge = document.createElement("span");
+
+                badge.className =
+                    "bg-slate-800 text-cyan-400 px-3 py-2 rounded-lg text-sm";
+
+                badge.textContent = tech;
+
+                techContainer.appendChild(badge);
+
+            });
+
+            document.getElementById("projectModal")
+                .classList.add("active");
+
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeProject() {
+
+            document.getElementById("projectModal")
+                .classList.remove("active");
+
+            document.body.style.overflow = "";
+
+        }
+
+        document.getElementById("projectModal")
+            .addEventListener("click", event => {
+
+                if (event.target.id === "projectModal") {
+                    closeProject();
+                }
+
+            });
+
+        document.addEventListener("keydown", event => {
+
+            if (event.key === "Escape") {
+                closeProject();
+            }
+
+        });
+
+
+        // ===================================
+        // 6. CONTACT FORM
+        // ===================================
+
+        const contactForm =
+            document.getElementById("contactForm");
+
+        contactForm.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const name =
+                document.getElementById("name").value.trim();
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const message =
+                document.getElementById("message").value.trim();
+
+            const status =
+                document.getElementById("formStatus");
+
+            if (!name || !email || !message) {
+
+                status.textContent =
+                    "Mohon lengkapi semua data.";
+
+                status.className =
+                    "text-sm mt-4 text-center text-red-400";
+
+                return;
+            }
+
+            // Ganti dengan email pribadi Anda
+            const destination = "emailkamu@example.com";
+
+            const subject = encodeURIComponent(
+                "Pesan Portfolio dari " + name
+            );
+
+            const body = encodeURIComponent(
+                "Nama: " + name +
+                "\nEmail: " + email +
+                "\n\nPesan:\n" + message
+            );
+
+            status.textContent =
+                "Membuka aplikasi email...";
+
+            status.className =
+                "text-sm mt-4 text-center text-emerald-400";
+
+            window.location.href =
+                `mailto:${destination}?subject=${subject}&body=${body}`;
+
+        });
+
+
+        // ===================================
+        // 7. FOOTER YEAR
+        // ===================================
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+    </script>
+
+</body>
+</html>
